@@ -1,0 +1,7 @@
+@font-face {
+  font-family: "Cabinet Grotesk";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("./fonts/CabinetGrotesk-Regular.otf") format("otf");
+}
