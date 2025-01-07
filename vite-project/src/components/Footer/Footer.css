@@ -13,9 +13,11 @@
 
 .footer__left {
   padding-left: 40px;
+  font-family: "CabinetGrotesk", sans-serif;
 }
 
 .footer__right {
   text-align: right;
   padding-right: 40px;
+  font-family: "CabinetGrotesk", sans-serif;
 }

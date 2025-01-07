@@ -36,6 +36,7 @@
   padding-top: 20px;
   padding-bottom: 12px;
   padding-left: 32px;
+  font-family: "CabinetGrotesk", sans-serif;
   margin: 0;
 }
 
@@ -45,6 +46,7 @@
   margin: 0;
   padding-left: 32px;
   padding-bottom: 32px;
+  font-family: "CabinetGrotesk", sans-serif;
 }
 
 .modal__footer {
@@ -55,6 +57,7 @@
 @media (max-width: 480px) {
   .modal {
     width: 343px;
+    z-index: 1000;
   }
 
   .modal__image {

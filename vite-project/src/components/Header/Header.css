@@ -10,7 +10,7 @@
 
 .header__add-clothes-btn {
   margin: 0 20px 0 auto;
-  font-family: Cabinet Grotesk; /*dont think font is working come back to it*/
+  font-family: "CabinetGrotesk", sans-serif;
   border: none;
   background: none;
 }
@@ -22,10 +22,10 @@
 }
 
 .header__date-and-location {
-  font-family: Cabinet Grotesk; /*not inline with logo come back to it*/
+  font-family: "CabinetGrotesk", sans-serif;
 }
 
 .header__username {
   margin: 0;
-  font-family: Cabinet Grotesk;
+  font-family: "CabinetGrotesk", sans-serif;
 }
