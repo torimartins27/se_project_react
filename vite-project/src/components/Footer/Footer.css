@@ -6,16 +6,16 @@
   font-weight: 500;
   padding: 0;
   line-height: 20px;
-  padding-top: 50px;
+  padding-top: 171px;
   margin-bottom: 10px;
   width: 100%;
 }
 
 .footer__left {
-  padding-left: 42px;
+  padding-left: 40px;
 }
 
 .footer__right {
   text-align: right;
-  padding-right: 42px;
+  padding-right: 40px;
 }

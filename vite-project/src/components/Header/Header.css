@@ -12,6 +12,7 @@
   margin: 0 20px 0 auto;
   font-family: Cabinet Grotesk; /*dont think font is working come back to it*/
   border: none;
+  background: none;
 }
 
 .header__user-container {
