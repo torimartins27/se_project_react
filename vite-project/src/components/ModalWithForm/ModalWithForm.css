@@ -1,14 +1,10 @@
 .modal {
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
   background-color: #0000004d;
   align-items: center;
   visibility: hidden;
   max-width: 496px;
-  max-height: 436px;
+  height: fit-content;
 }
 
 .modal_opened {
@@ -40,6 +36,7 @@
 .modal__form {
   display: flex;
   flex-direction: column;
+  padding-bottom: 36px;
 }
 
 .modal__input {
