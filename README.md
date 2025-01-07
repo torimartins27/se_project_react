@@ -8,4 +8,4 @@ The idea of the application is pretty simple - we make a call to an API, which t
 
 - [Figma Design](https://www.figma.com/design/F03bTb81Pw8IDPj5Y9rc5i/Sprint-10-%7C-WTWR?node-id=311-2032&t=e3BfKsQDAF8g5Kzl-0)
 
--[Github Page](https://torimartins27.github.io/se_project_react/)
+- [Github Page](https://torimartins27.github.io/se_project_react/)
