@@ -26,9 +26,8 @@
 
 .modal__image {
   width: 498px;
-  height: 350px;
+  height: 498px;
   object-fit: cover;
-  display: block;
 }
 
 .modal__caption {
@@ -44,7 +43,8 @@
   font-size: 20px;
   font-weight: 700;
   margin: 0;
-  margin-left: 32px;
+  padding-left: 32px;
+  padding-bottom: 32px;
 }
 
 .modal__footer {

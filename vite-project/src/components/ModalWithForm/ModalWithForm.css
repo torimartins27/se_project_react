@@ -18,9 +18,14 @@
 }
 
 .modal__close {
+  background-image: url("../../assets/Union.svg");
   position: absolute;
   top: 20px;
   right: 28px;
+  border: none;
+  width: 16px;
+  height: 16px;
+  background-color: transparent;
 }
 
 .modal__content {
@@ -41,6 +46,12 @@
 
 .modal__input {
   display: block;
+  border: none;
+  border-bottom: 1px solid #000;
+  width: 440px;
+  padding: 0;
+  padding-top: 8px;
+  padding-bottom: 4px;
 }
 
 .modal__label {
