@@ -41,10 +41,13 @@ function App() {
   }, []);
 
   return (
-    <div className="page">
-      <div className="page_content">
-        <Header handleAddClick={handleAddClick} weatherData={weatherData} />
-        <Main weatherData={weatherData} handleCardClick={handleCardClick} />
+    <>
+      <div className="page">
+        <div className="page_content">
+          <Header handleAddClick={handleAddClick} weatherData={weatherData} />
+          <Main weatherData={weatherData} handleCardClick={handleCardClick} />
+        </div>
+        <Footer />
       </div>
       <ModalWithForm
         title="New garment"
@@ -94,8 +97,7 @@ function App() {
         card={selectedCard}
         onClose={closeActiveModal}
       />
-      <Footer />
-    </div>
+    </>
   );
 }
 
