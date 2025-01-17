@@ -1,0 +1,9 @@
+.paragraphButton-section {
+  display: flex;
+  flex-direction: row;
+}
+
+.clothes-section__items {
+  display: flex;
+  gap: 10px;
+}

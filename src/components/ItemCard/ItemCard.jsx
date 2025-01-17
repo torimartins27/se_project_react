@@ -1,6 +1,10 @@
 import "./ItemCard.css";
 
 function ItemCard({ item, onCardClick }) {
+  if (!item) {
+    console.error("Item is undefined in ItemCard");
+    return null;
+  }
   const handleCardClick = () => {
     onCardClick(item);
   };

@@ -106,6 +106,10 @@
   font-family: "CabinetGrotesk", sans-serif;
 }
 
+.modal__submit:hover {
+  background-color: #000;
+}
+
 .modal__radio-buttons {
   border: none;
   padding: 0;
