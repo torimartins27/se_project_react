@@ -51,12 +51,17 @@ function App() {
   };
 
   const handleAddItemModalSubmit = ({ name, image, weather }) => {
+    if (!image) {
+      console.error("Image link is missing");
+      return;
+    }
     const newItem = {
       name,
       link: image,
       weather,
       _id: Date.now().toString(),
     };
+    console.log("image link", newItem.link, "image id:", newItem._id);
     setClothingItems((prevItems) => [
       { name, link: image, weather },
       ...prevItems,
@@ -64,6 +69,7 @@ function App() {
     postItem(newItem)
       .then(() => {
         closeActiveModal();
+        console.log("image link", newItem.link, "image id:", newItem._id);
       })
       .catch(console.error);
   };
