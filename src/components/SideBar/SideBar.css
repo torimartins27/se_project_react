@@ -1,4 +1,38 @@
 .sidebar {
   display: flex;
-  flex-direction: row;
+  margin: 0;
+  flex-direction: column;
+  gap: 16px;
+  margin-left: 40px;
+  width: 248px;
+  height: auto;
+}
+
+.sidebar__avatar {
+  height: 40px;
+  width: 40px;
+  border-radius: 50px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #000;
+  object-fit: cover;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.sidebar__username {
+  font-size: 20px;
+  line-height: 25px;
+  font-weight: 700;
+  margin: 0;
+  text-align: left;
+  width: 100%;
+  font-family: "CabinetGrotesk", sans-serif;
+}
+
+.sidebar__container {
+  display: flex;
+  margin: 0;
+  gap: 10px;
+  align-items: center;
 }

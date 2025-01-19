@@ -51,15 +51,21 @@ export const weatherOptions = [
   },
   {
     day: true,
-    condition: "atmosphere",
+    condition: "mist",
     url: new URL("../assets/day/haze.png", import.meta.url).href,
   },
   {
     day: false,
-    condition: "atmosphere",
+    condition: "mist",
     url: new URL("../assets/night/haze.png", import.meta.url).href,
   },
 ];
+
+export const defaultWeatherOption = {
+  day: true,
+  condition: "clear",
+  url: new URL("../assets/day/clear.png", import.meta.url).href,
+};
 
 export const defaultClothingItems = [
   {

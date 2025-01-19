@@ -1,5 +1,5 @@
 import "./WeatherCard.css";
-import { weatherOptions } from "../../utils/constants";
+import { defaultWeatherOption, weatherOptions } from "../../utils/constants";
 import { useContext } from "react";
 import CurrentTemperatureUnitContext from "../contexts/CurrentTemperatureContext";
 
@@ -12,7 +12,7 @@ function WeatherCard({ weatherData }) {
     );
   });
 
-  const weatherOption = filteredOptions[0];
+  const weatherOption = filteredOptions[0] ?? defaultWeatherOption;
 
   return (
     <section className="weather-card">

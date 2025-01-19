@@ -26,6 +26,7 @@
   width: 498px;
   height: 498px;
   object-fit: cover;
+  position: relative;
 }
 
 .modal__caption {
@@ -43,13 +44,24 @@
   font-weight: 700;
   margin: 0;
   padding-left: 32px;
-  padding-bottom: 32px;
   font-family: "CabinetGrotesk", sans-serif;
+  padding-bottom: 32px;
 }
 
 .modal__footer {
   box-sizing: border-box;
   background-color: white;
+}
+
+.modal__delete-item-btn {
+  position: absolute;
+  right: 30px;
+  bottom: 70px;
+  border: none;
+  background: transparent;
+  color: #ff4d00;
+  font-family: "CabinetGrotesk", sans-serif;
+  font-size: 20px;
 }
 
 @media (max-width: 480px) {

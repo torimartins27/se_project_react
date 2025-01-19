@@ -51,25 +51,16 @@ function App() {
   };
 
   const handleAddItemModalSubmit = ({ name, image, weather }) => {
-    if (!image) {
-      console.error("Image link is missing");
-      return;
-    }
     const newItem = {
       name,
-      avatarUrl: image,
+      imageUrl: image,
       weather,
     };
-    console.log("image link", newItem.link, "image id:", newItem._id);
 
     postItem(newItem)
-      .then(() => {
-        setClothingItems((prevItems) => [
-          { name, avatarUrl: image, weather },
-          ...prevItems,
-        ]);
+      .then((dbItem) => {
+        setClothingItems((prevItems) => [dbItem, ...prevItems]);
         closeActiveModal();
-        console.log("image link", newItem.link, "image id:", newItem._id);
       })
       .catch(console.error);
   };
@@ -133,6 +124,7 @@ function App() {
                 <Profile
                   clothingItems={clothingItems}
                   onCardClick={handleCardClick}
+                  handleAddClick={handleAddClick}
                 />
               }
             />

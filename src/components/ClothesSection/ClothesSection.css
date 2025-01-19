@@ -1,9 +1,50 @@
+.clothes-section {
+  display: flex;
+  flex-direction: column;
+  font-family: "CabinetGrotesk-Bold", Arial, sans-serif;
+  font-size: 20px;
+  line-height: 25px;
+  font-weight: 700;
+  margin-left: 90px;
+}
+
 .paragraphButton-section {
   display: flex;
   flex-direction: row;
+  align-items: center;
+  gap: 20px;
+  margin: 8px 0 16px 0;
+}
+
+.clothing__add-btn {
+  max-width: 110px;
+  padding: 0;
+  height: 25px;
+  border: none;
+  background: none;
+  opacity: 0.6;
+  cursor: pointer;
+  font-family: "CabinetGrotesk-Bold", Arial, sans-serif;
+  font-weight: 700;
+  line-height: 24px;
+  font-size: 20px;
+}
+
+.clothing__section-items {
+  margin: 0;
+}
+
+.clothes__add-btn:hover {
+  opacity: 1;
 }
 
 .clothes-section__items {
+  margin: 0;
   display: flex;
-  gap: 10px;
+  flex-wrap: wrap;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  gap: 20px;
+  max-width: 1015px;
 }

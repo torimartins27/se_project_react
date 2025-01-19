@@ -1,5 +1,8 @@
 .profile {
-  gap: 100px;
   display: flex;
-  flex-direction: row;
+  max-width: 1440px;
+}
+
+.profile__clothing-items {
+  margin: 0;
 }

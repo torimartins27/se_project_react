@@ -4,7 +4,7 @@ function ItemCard({ item, onCardClick }) {
   const handleCardClick = () => {
     onCardClick(item);
   };
-  console.log("Image link", item.link);
+  console.log("Image link!!", item.imageUrl);
 
   return (
     <div className="item__container">

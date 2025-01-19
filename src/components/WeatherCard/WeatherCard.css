@@ -4,6 +4,10 @@
   height: 80px;
   border: 12px;
   overflow: hidden;
+  max-width: 100%;
+  justify-content: center;
+  margin-left: 40px;
+  margin-right: 40px;
 }
 
 .weather-card__temp {

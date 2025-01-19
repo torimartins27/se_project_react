@@ -3,7 +3,8 @@
   grid-template-columns: repeat(auto-fit, 315px);
   grid-gap: 20px 20px;
   padding: 0;
-  margin: 0 auto 0 auto;
+  margin-left: 40px;
+  margin-right: 40px;
 }
 
 .item__container {
