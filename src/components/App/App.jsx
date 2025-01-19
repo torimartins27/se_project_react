@@ -57,17 +57,17 @@ function App() {
     }
     const newItem = {
       name,
-      link: image,
+      avatarUrl: image,
       weather,
-      _id: Date.now().toString(),
     };
     console.log("image link", newItem.link, "image id:", newItem._id);
-    setClothingItems((prevItems) => [
-      { name, link: image, weather },
-      ...prevItems,
-    ]);
+
     postItem(newItem)
       .then(() => {
+        setClothingItems((prevItems) => [
+          { name, avatarUrl: image, weather },
+          ...prevItems,
+        ]);
         closeActiveModal();
         console.log("image link", newItem.link, "image id:", newItem._id);
       })

@@ -72,14 +72,9 @@
       "_id": 17
     },
     {
-      "name": "new",
-      "weather": "cold",
-      "_id": 18
-    },
-    {
       "name": "new sneakers",
       "weather": "cold",
-      "_id": 19
+      "_id": 18
     }
   ]
 }
