@@ -59,6 +59,12 @@
       "imageUrl": "https://t4.ftcdn.net/jpg/05/06/36/71/360_F_506367145_aTN8tLqtKXDYxzHQs5DH4HGsbVT9OgMn.jpg",
       "weather": "cold",
       "_id": 18
+    },
+    {
+      "name": "new jacket",
+      "imageUrl": "https://media.istockphoto.com/id/1342121693/photo/blue-sport-winter-jacket-isolated-on-white-warm-clothes.jpg?s=612x612&w=0&k=20&c=l-hDjB6RgtSDSDnqJHOJAQds_2xEBPL9ZncaFQdcVtQ=",
+      "weather": "cold",
+      "_id": 19
     }
   ]
 }

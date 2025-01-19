@@ -8,7 +8,7 @@ import ItemModal from "../ItemModal/ItemModal";
 import Profile from "../Profile/Profile";
 import { getWeather, filterWeatherData } from "../../utils/weatherApi";
 import Footer from "../Footer/Footer";
-import CurrentTemperatureUnitContext from "../contexts/CurrentTemperatureContext";
+import CurrentTemperatureUnitContext from "../../utils/CurrentTemperatureContext";
 import AddItemModal from "../AddItemModal/AddItemModal";
 
 import { defaultClothingItems } from "../../utils/constants";
