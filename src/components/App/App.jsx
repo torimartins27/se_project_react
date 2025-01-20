@@ -8,7 +8,7 @@ import ItemModal from "../ItemModal/ItemModal";
 import Profile from "../Profile/Profile";
 import { getWeather, filterWeatherData } from "../../utils/weatherApi";
 import Footer from "../Footer/Footer";
-import CurrentTemperatureUnitContext from "../../utils/CurrentTemperatureContext";
+import CurrentTemperatureUnitContext from "../contexts/CurrentTemperatureContext";
 import AddItemModal from "../AddItemModal/AddItemModal";
 
 import { defaultClothingItems } from "../../utils/constants";
@@ -46,7 +46,7 @@ function App() {
     setActiveModal("");
   };
 
-  const handleAddItemModalSubmit = ({ name, image, weather }) => {
+  const handleAddItemModalSubmit = ({ name, image, weather }, resetForm) => {
     const newItem = {
       name,
       imageUrl: image,
@@ -57,6 +57,7 @@ function App() {
       .then((dbItem) => {
         setClothingItems((prevItems) => [dbItem, ...prevItems]);
         closeActiveModal();
+        resetForm();
       })
       .catch(console.error);
   };

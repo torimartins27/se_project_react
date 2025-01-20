@@ -23,17 +23,15 @@ export default function AddItemModal({
     setWeather(e.target.value);
   };
 
+  const resetForm = () => {
+    setName("");
+    setImage("");
+    setWeather("");
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    try {
-      await onAddItemModalSubmit({ name, image, weather });
-      setName("");
-      setImage("");
-      setWeather("");
-    } catch (error) {
-      console.error("Error submitting the form:", error);
-    }
+    onAddItemModalSubmit({ name, image, weather }, resetForm);
   };
   useEffect(() => {
     if (isOpen) {
