@@ -65,6 +65,18 @@
       "imageUrl": "https://media.istockphoto.com/id/1342121693/photo/blue-sport-winter-jacket-isolated-on-white-warm-clothes.jpg?s=612x612&w=0&k=20&c=l-hDjB6RgtSDSDnqJHOJAQds_2xEBPL9ZncaFQdcVtQ=",
       "weather": "cold",
       "_id": 19
+    },
+    {
+      "name": "new sneakers",
+      "imageUrl": "https://media.istockphoto.com/id/495204892/photo/sneakers.jpg?s=612x612&w=0&k=20&c=QSkl09_Rx2lvayG93dWBmoCsVPThoAB1VgcSyh6Jy_4=",
+      "weather": "cold",
+      "_id": 20
+    },
+    {
+      "name": "test",
+      "imageUrl": "https://media.istockphoto.com/id/495204892/photo/sneakers.jpg?s=612x612&w=0&k=20&c=QSkl09_Rx2lvayG93dWBmoCsVPThoAB1VgcSyh6Jy_4=",
+      "weather": "cold",
+      "_id": 21
     }
   ]
 }

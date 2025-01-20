@@ -42,10 +42,6 @@ function App() {
     setActiveModal("add-garment");
   };
 
-  const handleDeleteClick = () => {
-    setActiveModal("delete");
-  };
-
   const closeActiveModal = () => {
     setActiveModal("");
   };
@@ -71,13 +67,11 @@ function App() {
         setClothingItems((prevItems) =>
           prevItems.filter((item) => item._id !== selectedCard._id)
         );
-        setSelectedCard(null); // Clear the selected card after successful deletion
+        setSelectedCard(null);
+        closeActiveModal();
       })
       .catch((err) => {
         console.error("Error deleting the item:", err);
-      })
-      .finally(() => {
-        setActiveModal(""); // Close the modal regardless of the outcome
       });
   };
 
@@ -99,63 +93,61 @@ function App() {
   }, []);
 
   return (
-    <>
-      <CurrentTemperatureUnitContext.Provider
-        value={{ currentTemperatureUnit, handleToggleSwitchChange }}
-      >
-        <div className="page">
-          <div className="page_content">
-            <Header handleAddClick={handleAddClick} weatherData={weatherData} />
-          </div>
-          <Routes>
-            <Route
-              path=""
-              element={
-                <Main
-                  weatherData={weatherData}
-                  handleCardClick={handleCardClick}
-                  clothingItems={clothingItems}
-                />
-              }
-            />
-            <Route
-              path="/profile"
-              element={
-                <Profile
-                  clothingItems={clothingItems}
-                  onCardClick={handleCardClick}
-                  handleAddClick={handleAddClick}
-                />
-              }
-            />
-          </Routes>
-          <Footer />
+    <CurrentTemperatureUnitContext.Provider
+      value={{ currentTemperatureUnit, handleToggleSwitchChange }}
+    >
+      <div className="page">
+        <div className="page_content">
+          <Header handleAddClick={handleAddClick} weatherData={weatherData} />
         </div>
+        <Routes>
+          <Route
+            path=""
+            element={
+              <Main
+                weatherData={weatherData}
+                handleCardClick={handleCardClick}
+                clothingItems={clothingItems}
+              />
+            }
+          />
+          <Route
+            path="/profile"
+            element={
+              <Profile
+                clothingItems={clothingItems}
+                onCardClick={handleCardClick}
+                handleAddClick={handleAddClick}
+              />
+            }
+          />
+        </Routes>
+        <Footer />
+      </div>
 
-        {activeModal && (
-          <>
-            <div className="modal-overlay" onClick={closeActiveModal}></div>
-            {activeModal === "add-garment" && (
-              <AddItemModal
-                isOpen={activeModal === "add-garment"}
-                onClose={closeActiveModal}
-                onAddItemModalSubmit={handleAddItemModalSubmit}
-              />
-            )}
-            {activeModal === "preview" && (
-              <ItemModal
-                isOpen={activeModal === "preview"}
-                card={selectedCard}
-                onClose={closeActiveModal}
-                selectedCard={selectedCard}
-                onSelectCard={setSelectedCard}
-                onDeleteClick={handleDeleteCard}
-              />
-            )}
-          </>
-        )}
-      </CurrentTemperatureUnitContext.Provider>
-    </>
+      {activeModal && (
+        <>
+          <div className="modal-overlay" onClick={closeActiveModal}></div>
+          {activeModal === "add-garment" && (
+            <AddItemModal
+              isOpen={activeModal === "add-garment"}
+              onClose={closeActiveModal}
+              onAddItemModalSubmit={handleAddItemModalSubmit}
+            />
+          )}
+          {activeModal === "preview" && (
+            <ItemModal
+              isOpen={activeModal === "preview"}
+              card={selectedCard}
+              onClose={closeActiveModal}
+              selectedCard={selectedCard}
+              onSelectCard={setSelectedCard}
+              onDeleteClick={handleDeleteCard}
+            />
+          )}
+        </>
+      )}
+    </CurrentTemperatureUnitContext.Provider>
   );
 }
 
