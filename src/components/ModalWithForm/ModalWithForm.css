@@ -29,7 +29,7 @@
 }
 
 .modal__close {
-  background-image: url("../../assets/Union.svg");
+  background-image: url("../../assets/x1.svg");
   position: absolute;
   top: 20px;
   right: 28px;
@@ -37,6 +37,7 @@
   width: 16px;
   height: 16px;
   background-color: transparent;
+  z-index: 1000;
 }
 
 .modal__content {

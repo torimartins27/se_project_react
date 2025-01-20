@@ -66,14 +66,14 @@
 }
 
 .modal__close {
-  background-image: url("../../assets/Union.svg");
+  background-image: url("../../assets/x2.svg");
   position: absolute;
   top: 20px;
   right: 28px;
   border: none;
   width: 16px;
   height: 16px;
-  color: black;
+  color: white;
   background-color: transparent;
   z-index: 1000;
 }
