@@ -165,6 +165,21 @@ function App() {
       .finally(() => setIsLoading(false));
   };
 
+  function getUserData() {
+    const token = localStorage.getItem("jwt");
+    if (token) {
+      fetchUserData(token)
+        .then((userData) => {
+          setCurrentUser(userData.foundUser);
+        })
+        .catch((err) => {
+          console.error("Token validation failed", err);
+          localStorage.removeItem("jwt");
+          navigate("/login");
+        });
+    }
+  }
+
   const handleLogin = (values) => {
     setIsLoading(true);
     signIn(values.email, values.password)
@@ -174,13 +189,7 @@ function App() {
           throw new Error("Token not received");
         }
         localStorage.setItem("jwt", data.token);
-        return fetchUserData(data.token);
-      })
-      .then((userData) => {
-        console.log("Fetched userData:", userData); // Debugging
-        setCurrentUser(userData.foundUser);
-        setIsLoggedIn(true);
-        setActiveModal("");
+        getUserData();
       })
       .catch((error) => console.error("Login failed", error))
       .finally(() => setIsLoading(false));
@@ -192,6 +201,10 @@ function App() {
     setCurrentUser(null);
     navigate("/");
   };
+
+  useEffect(() => {
+    getUserData();
+  }, [navigate]);
 
   useEffect(() => {
     getWeather(coordinates, APIkey)
@@ -210,21 +223,6 @@ function App() {
       })
       .catch(console.error);
   }, []);
-
-  useEffect(() => {
-    const token = localStorage.getItem("jwt");
-    if (token) {
-      fetchUserData(token)
-        .then((userData) => {
-          setCurrentUser(userData.foundUser);
-        })
-        .catch((err) => {
-          console.error("Token validation failed:", err);
-          localStorage.removeItem("jwt");
-          navigate("/login");
-        });
-    }
-  }, [navigate]);
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
