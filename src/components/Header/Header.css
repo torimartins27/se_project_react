@@ -48,3 +48,23 @@
   flex-direction: row;
   align-items: center;
 }
+
+.modal__button-signup {
+  border: none;
+  background: none;
+  font-family: "CabinetGrotesk", sans-serif;
+  margin-left: 20px;
+  padding: 0;
+  font-weight: 700;
+  font-size: 20px;
+}
+
+.modal__button-login {
+  border: none;
+  background: none;
+  font-family: "CabinetGrotesk", sans-serif;
+  margin-left: 20px;
+  padding: 0;
+  font-weight: 700;
+  font-size: 20px;
+}

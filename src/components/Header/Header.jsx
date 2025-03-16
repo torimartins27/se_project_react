@@ -1,14 +1,42 @@
 import "./Header.css";
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+
 import logo from "../../assets/logo.svg";
 import avatar from "../../assets/avatar.png";
 import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
+import CurrentUserContext from "../../contexts/CurrentUserContext";
 
-function Header({ handleAddClick, weatherData }) {
+function Header({
+  handleAddClick,
+  weatherData,
+  isLoggedIn,
+  onLoginClick,
+  onSignupClick,
+}) {
   const currentDate = new Date().toLocaleString("default", {
     month: "long",
     day: "numeric",
   });
+
+  const currentUser = useContext(CurrentUserContext);
+
+  const renderUserAvatar = () => {
+    if (currentUser?.avatar) {
+      return (
+        <img
+          src={currentUser.avatar}
+          alt={currentUser.name}
+          className="header__avatar"
+        />
+      );
+    }
+    const firstLetter = currentUser?.name
+      ? currentUser.name.charAt(0).toUpperCase()
+      : "?";
+    return <div className="header__avatar-placeholder">{firstLetter}</div>;
+  };
+
   return (
     <header className="header">
       <div className="header__container-left">
@@ -22,24 +50,34 @@ function Header({ handleAddClick, weatherData }) {
       </div>
       <div className="header__right">
         <ToggleSwitch />
-
-        <button
-          onClick={handleAddClick}
-          type="button"
-          className="header__add-clothes-btn"
-        >
-          + Add clothes
-        </button>
-        <Link to="/profile" className="header__link">
-          <div className="header__user-container">
-            <p className="header__username">Terrence Tegegne</p>
-            <img
-              src={avatar}
-              alt="Terrence Tegegne"
-              className="header__avatar"
-            />
-          </div>
-        </Link>
+        {isLoggedIn ? (
+          <>
+            <button
+              onClick={handleAddClick}
+              type="button"
+              className="header__add-clothes-btn"
+            >
+              + Add clothes
+            </button>
+            <Link to="/profile" className="header__link">
+              <div className="header__user-container">
+                <p className="header__username">
+                  {currentUser?.name || "User"}
+                </p>
+                {renderUserAvatar()}
+              </div>
+            </Link>{" "}
+          </>
+        ) : (
+          <>
+            <button className="modal__button-signup" onClick={onSignupClick}>
+              Sign Up
+            </button>
+            <button className="modal__button-login" onClick={onLoginClick}>
+              Log In
+            </button>
+          </>
+        )}
       </div>
     </header>
   );
