@@ -23,17 +23,14 @@ export const signIn = (email, password) => {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({ email, password }),
-  }).then(async (res) => {
-    const data = await res.json();
-    if (!res.ok) {
-      throw new Error(data.message || "Login failed"); // ✅ Handles backend error
-    }
-    if (!data.token) {
-      throw new Error("Token not received"); // ✅ Explicitly check for token
-    }
-    localStorage.setItem("jwt", data.token);
-    return data;
-  });
+  })
+    .then((res) => res.json())
+    .then((data) => {
+      if (data.token) {
+        localStorage.setItem("jwt", data.token);
+      }
+      return data;
+    });
 };
 
 export const fetchUserData = (token) => {
