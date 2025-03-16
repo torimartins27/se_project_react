@@ -168,12 +168,6 @@ function App() {
   const handleLogin = (values) => {
     setIsLoading(true);
     signIn(values.email, values.password)
-      .then((res) => {
-        if (!res.ok) {
-          throw new Error("Login failed");
-        }
-        return res.json();
-      })
       .then((data) => {
         console.log("Response Data:", data); // Debugging
         if (!data.token) {

@@ -23,14 +23,7 @@ export const signIn = (email, password) => {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({ email, password }),
-  })
-    .then((res) => res.json())
-    .then((data) => {
-      if (data.token) {
-        localStorage.setItem("jwt", data.token);
-      }
-      return data;
-    });
+  }).then((res) => res.json());
 };
 
 export const fetchUserData = (token) => {
