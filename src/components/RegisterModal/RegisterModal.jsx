@@ -8,7 +8,12 @@ export default function RegisterModal({
   onClose,
   handleLoginClick,
 }) {
-  const { values, handleChange, isValid, resetForm } = useFormAndValidation();
+  const { values, handleChange, isValid, resetForm } = useFormAndValidation({
+    name: "", // Add 'name' here
+    email: "",
+    password: "",
+    avatar: "",
+  });
 
   const onRegistration = (event) => {
     event.preventDefault();
@@ -52,6 +57,19 @@ export default function RegisterModal({
           placeholder="Password"
           onChange={handleChange}
           value={values.password || ""}
+          required
+        />
+      </label>
+      <label htmlFor="register-name" className="modal__label">
+        Name
+        <input
+          id="register-name"
+          type="text"
+          name="name"
+          className="modal__input"
+          placeholder="Name"
+          onChange={handleChange}
+          value={values.name || ""}
           required
         />
       </label>
