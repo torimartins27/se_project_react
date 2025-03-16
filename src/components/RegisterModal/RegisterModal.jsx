@@ -2,30 +2,35 @@ import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import useFormAndValidation from "../../utils/useFormAndValidation";
 
 export default function RegisterModal({
-  onClose,
-  isOpen,
-  handleRegistration,
-  setActiveModal,
+  handleRegister,
   isLoading,
+  isOpen,
+  onClose,
+  handleLoginClick,
 }) {
   const { values, handleChange, isValid, resetForm } = useFormAndValidation();
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    handleRegistration(values);
-    resetForm({ email: "", password: "" });
+  const onRegistration = (event) => {
+    event.preventDefault();
+    handleRegister(values);
+    resetForm();
   };
+
+  const handleOrLoginClick = () => {
+    handleLoginClick();
+  };
+
   return (
     <ModalWithForm
       title="Sign up"
       buttonText={isLoading ? "Registering..." : "Next"}
       isOpen={isOpen}
       onClose={onClose}
-      onSubmit={handleSubmit}
       formValid={isValid}
+      onSubmit={onRegistration}
     >
       <label htmlFor="register-email" className="modal__label">
-        Email*
+        Email
         <input
           id="register-email"
           type="email"
@@ -38,7 +43,7 @@ export default function RegisterModal({
         />
       </label>
       <label htmlFor="register-password" className="modal__label">
-        Password*
+        Password
         <input
           id="register-password"
           type="password"
@@ -51,7 +56,7 @@ export default function RegisterModal({
         />
       </label>
       <label htmlFor="register-avatar" className="modal__label">
-        Avatar URL*{" "}
+        Avatar URL
         <input
           id="register-avatar"
           type="url"
@@ -64,13 +69,10 @@ export default function RegisterModal({
         />
       </label>
       <div className="modal__button-containter">
-        <button type="submit" className="modal__submit" disabled={!isValid}>
-          {isLoading ? "Signing up..." : "Signup"}
-        </button>
         <button
           type="button"
           className="modal__to-login"
-          onClick={() => setActiveModal("login")}
+          onClick={handleOrLoginClick}
         >
           or Login
         </button>

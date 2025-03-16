@@ -1,4 +1,4 @@
-const BASE_URL = "http://localhost:5000";
+const BASE_URL = "http://localhost:3001";
 
 export const signUp = (name, avatar, email, password) => {
   return fetch(`${BASE_URL}/signup`, {

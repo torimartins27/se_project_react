@@ -1,10 +1,10 @@
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import useFormAndValidation from "../../utils/useFormAndValidation";
 
-export default function RegisterModal({
+export default function LoginModal({
   onClose,
   isOpen,
-  handleRegistration,
+  handleLogin,
   setActiveModal,
   isLoading,
 }) {
@@ -12,7 +12,7 @@ export default function RegisterModal({
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    handleRegistration(values);
+    handleLogin(values);
     resetForm({ email: "", password: "" });
   };
   return (
@@ -53,15 +53,12 @@ export default function RegisterModal({
         />
       </label>
       <div className="modal__button-container">
-        <button type="submit" className="modal__submit" disabled={!isValid}>
-          {isLoading ? "Logging in..." : "Login"}
-        </button>
         <button
           className="modal__to-register"
           type="button"
           onClick={() => setActiveModal("register")}
         >
-          or Sign up
+          or Register
         </button>
       </div>
     </ModalWithForm>

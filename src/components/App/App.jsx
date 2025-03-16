@@ -39,6 +39,26 @@ function App() {
   const [currentUser, setCurrentUser] = useState(null);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
+  function handleOpenLogin() {
+    setActiveModal("login");
+  }
+
+  function handleOpenRegister() {
+    setActiveModal("register");
+  }
+
+  const handleLoginClick = () => {
+    setActiveModal("login");
+  };
+
+  const handleEditProfileClick = () => {
+    setActiveModal("login");
+  };
+
+  const handleDeleteClick = () => {
+    setActiveModal("delete-modal");
+  };
+
   const handleToggleSwitchChange = () => {
     setCurrentTemperatureUnit(currentTemperatureUnit === "F" ? "C" : "F");
   };
@@ -140,7 +160,7 @@ function App() {
         setIsLoggedIn(true);
         setActiveModal("");
       })
-      .catch((error) => console.error("Registration or login failed", error))
+      .catch((error) => console.error(" failed", error))
       .finally(() => setIsLoading(false));
   };
 
@@ -217,8 +237,8 @@ function App() {
               handleAddClick={handleAddClick}
               weatherData={weatherData}
               isLoggedIn={isLoggedIn}
-              onLoginClick={handleLogin}
-              onSignupClick={handleRegister}
+              onLoginClick={handleOpenLogin}
+              onSignupClick={handleOpenRegister}
             />
           </div>
           <Routes>
@@ -247,20 +267,6 @@ function App() {
                 </ProtectedRoute>
               }
             />
-            <Route
-              path="/login"
-              element={
-                <ProtectedRoute anonymous>
-                  <LoginModal
-                    isOpen={true}
-                    handleLogin={handleLogin}
-                    isLoading={isLoading}
-                    onClose={closeActiveModal}
-                    setActiveModal={setActiveModal}
-                  />
-                </ProtectedRoute>
-              }
-            />
           </Routes>
           <Footer />
         </div>
@@ -270,10 +276,12 @@ function App() {
             <div className="modal-overlay" onClick={closeActiveModal}></div>
             {activeModal === "register" && (
               <RegisterModal
-                handleRegistration={handleRegister}
+                isOpen={true}
+                handleRegister={handleRegister}
                 isLoading={isLoading}
                 onClose={closeActiveModal}
                 setActiveModal={setActiveModal}
+                handleLoginClick={handleLoginClick}
               />
             )}
 
