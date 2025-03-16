@@ -151,14 +151,15 @@ function App() {
         return res.json();
       })
       .then((data) => {
-        if (!data.toekn) throw new Error("Token not received");
+        if (!data.token) throw new Error("Token not received");
         localStorage.setItem("jwt", data.token);
         return fetchUserData(data.token);
       })
       .then((userData) => {
-        setCurrentUser(userData);
+        setCurrentUser(userData.foundUser);
         setIsLoggedIn(true);
         setActiveModal("");
+        navigate("/profile");
       })
       .catch((error) => console.error(" failed", error))
       .finally(() => setIsLoading(false));
@@ -174,11 +175,16 @@ function App() {
         return res.json();
       })
       .then((data) => {
+        console.log("Response Data:", data); // Debugging
+        if (!data.token) {
+          throw new Error("Token not received");
+        }
         localStorage.setItem("jwt", data.token);
         return fetchUserData(data.token);
       })
       .then((userData) => {
-        setCurrentUser(userData);
+        console.log("Fetched userData:", userData); // Debugging
+        setCurrentUser(userData.foundUser);
         setIsLoggedIn(true);
         setActiveModal("");
       })
@@ -216,7 +222,7 @@ function App() {
     if (token) {
       fetchUserData(token)
         .then((userData) => {
-          setCurrentUser(userData);
+          setCurrentUser(userData.foundUser);
         })
         .catch((err) => {
           console.error("Token validation failed:", err);

@@ -37,6 +37,8 @@ function Header({
     return <div className="header__avatar-placeholder">{firstLetter}</div>;
   };
 
+  console.log("Rendering currentUser:", currentUser);
+
   return (
     <header className="header">
       <div className="header__container-left">
@@ -61,9 +63,7 @@ function Header({
             </button>
             <Link to="/profile" className="header__link">
               <div className="header__user-container">
-                <p className="header__username">
-                  {currentUser?.name || "User"}
-                </p>
+                <p className="header__username">{currentUser.name}</p>
                 {renderUserAvatar()}
               </div>
             </Link>{" "}

@@ -9,7 +9,7 @@ export default function RegisterModal({
   handleLoginClick,
 }) {
   const { values, handleChange, isValid, resetForm } = useFormAndValidation({
-    name: "", // Add 'name' here
+    name: "",
     email: "",
     password: "",
     avatar: "",
