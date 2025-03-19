@@ -9,7 +9,7 @@ export default function ProtectedRoute({ children, anonymous = false }) {
   }
 
   if (!anonymous && !isLoggedIn) {
-    return <Navigate to="/login" />;
+    return <Navigate to="/signin" />;
   }
 
   return children;

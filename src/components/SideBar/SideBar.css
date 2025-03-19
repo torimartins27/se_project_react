@@ -36,3 +36,11 @@
   gap: 10px;
   align-items: center;
 }
+
+.sidebar__button {
+  border: none;
+  font-size: 20px;
+  font-weight: 700;
+  font-family: "CabinetGrotesk-Bold", Arial, sans-serif;
+  background: none;
+}

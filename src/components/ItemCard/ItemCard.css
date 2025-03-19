@@ -35,6 +35,32 @@
   font-family: "CabinetGrotesk", sans-serif;
 }
 
+.card__like-btn {
+  background-image: url("../../assets/likeButton.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  padding-left: 20px;
+  height: 18px;
+  width: 15px;
+  position: absolute;
+  top: 20px;
+  right: 70px;
+}
+
+.card__like-btn_active {
+  background-image: url("../../assets/likeButtonActive.svg");
+}
+
+.like-button__icon {
+  width: 24px;
+  height: 24px;
+  transition: transform 0.3s;
+}
+
 @media (max-width: 480px) {
   .cards__list {
     justify-content: center;

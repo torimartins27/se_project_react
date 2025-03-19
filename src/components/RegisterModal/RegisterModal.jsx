@@ -1,5 +1,6 @@
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import useFormAndValidation from "../../utils/useFormAndValidation";
+import "./RegisterModal.css";
 
 export default function RegisterModal({
   handleRegister,
@@ -33,6 +34,7 @@ export default function RegisterModal({
       onClose={onClose}
       formValid={isValid}
       onSubmit={onRegistration}
+      className="modal__button-next"
     >
       <label htmlFor="register-email" className="modal__label">
         Email

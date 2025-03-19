@@ -32,6 +32,15 @@
   font-family: "CabinetGrotesk", sans-serif;
 }
 
+.header__avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #000;
+}
+
 .header__link {
   text-decoration: none;
   color: #000;

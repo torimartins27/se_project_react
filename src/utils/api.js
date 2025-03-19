@@ -19,19 +19,19 @@ function postItem({ name, imageUrl, weather }, token) {
   }).then(checkResponse);
 }
 
-function updateItem(id, updatedItem, token) {
-  return fetch(`${baseUrl}/items/${id}`, {
-    method: "PUT",
+function updateProfile({ name, avatar }, token) {
+  return fetch(`${baseUrl}/users/me`, {
+    method: "PATCH",
     headers: {
       "Content-Type": "application/json",
       Authorization: `Bearer ${token}`,
     },
-    body: JSON.stringify(updatedItem),
+    body: JSON.stringify({ name, avatar }),
   }).then(checkResponse);
 }
 
 function deleteItem(id, token) {
-  return fetch(`${baseUrl}/items/${id}`, {
+  return fetch(`${baseUrl}/items/${id}/likes`, {
     method: "DELETE",
     headers: {
       Authorization: `Bearer ${token}`,
@@ -39,25 +39,13 @@ function deleteItem(id, token) {
   }).then(checkResponse);
 }
 
-function editProfile({ name, avatarUrl }, token) {
-  return fetch(`${baseUrl}/users/me`, {
-    method: "PATCH",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${token}`,
-    },
-    body: JSON.stringify({
-      name,
-      avatar: avatarUrl,
-    }),
-  }).then(checkResponse);
-}
-
 function addCardLike(id, token) {
+  console.log(`Request URL: ${baseUrl}/items/${id}/likes`);
   return fetch(`${baseUrl}/items/${id}/likes`, {
     method: "PUT",
     headers: {
-      Authorization: `Bearer ${token}`,
+      "Content-Type": "application/Json",
+      authorization: `Bearer ${token}`,
     },
   }).then(checkResponse);
 }
@@ -66,7 +54,8 @@ function removeCardLike(id, token) {
   return fetch(`${baseUrl}/items/${id}/likes`, {
     method: "DELETE",
     headers: {
-      Authorization: `Bearer ${token}`,
+      "Content-Type": "application/Json",
+      authorization: `Bearer ${token}`,
     },
   }).then(checkResponse);
 }
@@ -94,10 +83,9 @@ function registerUser({ email, password, name, avatar }) {
 export {
   getItems,
   postItem,
-  updateItem,
+  updateProfile,
   deleteItem,
   checkResponse,
-  editProfile,
   addCardLike,
   removeCardLike,
   loginUser,

@@ -1,4 +1,5 @@
 import "./ItemModal.css";
+import { useContext } from "react";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
 
 function ItemModal({
@@ -9,6 +10,8 @@ function ItemModal({
   onSelectCard,
   onDeleteClick,
 }) {
+  const currentUser = useContext(CurrentUserContext);
+
   const isOwn = selectedCard?.owner === currentUser?._id;
 
   const itemDeleteButtonClassName = `modal__delete-item-btn ${
@@ -20,8 +23,6 @@ function ItemModal({
       onDeleteClick();
     }
   };
-
-  const currentUser = useContext(CurrentUserContext);
 
   return (
     <div className={`modal ${isOpen && "modal_opened"}`}>

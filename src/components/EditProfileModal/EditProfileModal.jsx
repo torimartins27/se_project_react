@@ -1,15 +1,13 @@
-import "./EditProfileModal.css";
 import { useContext, useState } from "react";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
 
-function EditProfileModal({ isOpen, onClose, onUpdateUser }) {
+function EditProfileModal({ isOpen, onClose, handleEditProfile }) {
   const currentUser = useContext(CurrentUserContext);
   const [name, setName] = useState(currentUser?.name || "");
   const [avatar, setAvatar] = useState(currentUser?.avatar || "");
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    onUpdateUser({ name, avatar });
+  const handleSubmit = () => {
+    handleEditProfile({ name, avatar });
   };
 
   return (

@@ -1,5 +1,6 @@
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import useFormAndValidation from "../../utils/useFormAndValidation";
+import "./LoginModal.css";
 
 export default function LoginModal({
   onClose,

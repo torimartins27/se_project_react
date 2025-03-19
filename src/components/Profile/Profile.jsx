@@ -9,25 +9,30 @@ function Profile({
   onCardClick,
   handleAddClick,
   handleSignOut,
-  handleCardLike,
+  onCardLike,
+  handleEditProfileClick,
 }) {
   const currentUser = useContext(CurrentUserContext);
+  if (!currentUser) {
+    return <p>Please log in to view your profile.</p>;
+  }
+
   return (
     <div className="profile">
       <section className="profile__sidebar">
-        <SideBar handleSignOutClick={handleSignOut} />
+        <SideBar
+          handleEditProfileClick={handleEditProfileClick}
+          handleSignOut={handleSignOut}
+        />
       </section>
       <section className="profile__clothing-items">
         <ClothesSection
           clothingItems={clothingItems}
           onCardClick={onCardClick}
           handleAddClick={handleAddClick}
-          handleCardLike={handleCardLike}
+          onCardLike={onCardLike}
         />
       </section>
-      <button className="profile__sign-out" onClick={handleSignOut}>
-        Sign Out
-      </button>
     </div>
   );
 }
