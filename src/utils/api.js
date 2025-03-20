@@ -31,7 +31,7 @@ function updateProfile({ name, avatar }, token) {
 }
 
 function deleteItem(id, token) {
-  return fetch(`${baseUrl}/items/${id}/likes`, {
+  return fetch(`${baseUrl}/items/${id}`, {
     method: "DELETE",
     headers: {
       Authorization: `Bearer ${token}`,

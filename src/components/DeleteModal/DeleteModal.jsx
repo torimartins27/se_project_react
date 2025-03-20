@@ -28,3 +28,5 @@ function DeleteModal({ onClose, isOpen, onDeleteCard }) {
     </div>
   );
 }
+
+export default DeleteModal;

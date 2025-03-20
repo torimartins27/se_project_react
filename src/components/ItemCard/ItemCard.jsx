@@ -2,16 +2,16 @@ import "./ItemCard.css";
 import { useContext } from "react";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
 
-function ItemCard({ item, onCardClick, onCardLike }) {
+function ItemCard({ item, handleCardClick, onCardLike }) {
   const currentUser = useContext(CurrentUserContext);
 
   const isLiked =
     Array.isArray(item.likes) &&
-    item.likes.some((id) => id === currentUser?._id);
+    item.likes.some((id) => id.toString() === currentUser?._id.toString());
 
-  const handleCardClick = () => {
-    onCardClick(item);
-  };
+  console.log("Item Likes:", item.likes);
+  console.log("Current User ID:", currentUser?._id);
+  console.log("Is Liked:", isLiked);
 
   const handleLikeClick = () => {
     console.log("Item:", item);
@@ -25,7 +25,7 @@ function ItemCard({ item, onCardClick, onCardLike }) {
     <div className="item__container">
       <h2 className="card__name">{item.name}</h2>
       <img
-        onCardClick={handleCardClick}
+        onClick={() => handleCardClick(item)}
         src={item.imageUrl}
         alt={item.name}
         className="card__image"

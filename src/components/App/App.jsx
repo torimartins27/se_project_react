@@ -8,6 +8,7 @@ import ItemModal from "../ItemModal/ItemModal";
 import RegisterModal from "../RegisterModal/RegisterModal";
 import LoginModal from "../LoginModal/LoginModal";
 import Profile from "../Profile/Profile";
+import DeleteModal from "../DeleteModal/DeleteModal";
 import { getWeather, filterWeatherData } from "../../utils/weatherApi";
 import Footer from "../Footer/Footer";
 import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureContext";
@@ -36,7 +37,7 @@ function App() {
   const [activeModal, setActiveModal] = useState("");
   const [selectedCard, setSelectedCard] = useState({});
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
-  const [clothingItems, setClothingItems] = useState(defaultClothingItems);
+  const [clothingItems, setClothingItems] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [currentUser, setCurrentUser] = useState(null);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -72,23 +73,32 @@ function App() {
 
   const handleLikeClick = (item, isLiked) => {
     const token = localStorage.getItem("jwt");
-    const id = item._id;
+    const id = item.item._id;
+
+    console.log("Like Clicked - Item ID:", id, "Is Liked:", isLiked);
+
+    const updateState = (updatedItem) => {
+      const newItem = updatedItem.likedItem || updatedItem;
+      console.log("Updated Item:", newItem);
+
+      setClothingItems((cards) =>
+        cards.map((card) => (card._id === id ? newItem : card))
+      );
+
+      console.log("State Updated - Clothing Items:", clothingItems);
+    };
+
     if (!isLiked) {
+      console.log("Sending like request for item ID:", id);
       addCardLike(id, token)
-        .then((updatedItem) => {
-          setClothingItems((cards) =>
-            cards.map((card) => (card._id == id ? updatedItem : card))
-          );
-        })
-        .catch((err) => console.log(err));
-    } else
+        .then(updateState)
+        .catch((err) => console.error("Error adding like:", err));
+    } else {
+      console.log("Sending unlike request for item ID:", id);
       removeCardLike(id, token)
-        .then((updatedItem) => {
-          setClothingItems((cards) =>
-            cards.map((card) => (card._id == id ? updatedItem : card))
-          );
-        })
-        .catch((err) => console.log(err));
+        .then(updateState)
+        .catch((err) => console.error("Error removing like:", err));
+    }
   };
 
   const closeActiveModal = () => {
@@ -210,7 +220,7 @@ function App() {
   useEffect(() => {
     getItems()
       .then((data) => {
-        console.log("Fetched clothing items:", data); // Debugging
+        console.log("Fetched clothing items data.items:", data.items); // Debugging
         setClothingItems(data.items);
       })
       .catch(console.error);
@@ -266,7 +276,7 @@ function App() {
                 <ProtectedRoute>
                   <Profile
                     clothingItems={clothingItems}
-                    onCardClick={handleCardClick}
+                    handleCardClick={handleCardClick}
                     handleAddClick={handleAddClick}
                     handleSignOut={handleSignOut}
                     onCardLike={handleLikeClick}

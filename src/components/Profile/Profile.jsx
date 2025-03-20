@@ -6,11 +6,12 @@ import CurrentUserContext from "../../contexts/CurrentUserContext";
 
 function Profile({
   clothingItems,
-  onCardClick,
+  handleCardClick,
   handleAddClick,
   handleSignOut,
   onCardLike,
   handleEditProfileClick,
+  isLiked,
 }) {
   const currentUser = useContext(CurrentUserContext);
   if (!currentUser) {
@@ -28,9 +29,10 @@ function Profile({
       <section className="profile__clothing-items">
         <ClothesSection
           clothingItems={clothingItems}
-          onCardClick={onCardClick}
+          handleCardClick={handleCardClick}
           handleAddClick={handleAddClick}
           onCardLike={onCardLike}
+          isLiked={isLiked}
         />
       </section>
     </div>
