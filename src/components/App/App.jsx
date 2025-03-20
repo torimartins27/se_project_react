@@ -71,25 +71,19 @@ function App() {
     setActiveModal("add-garment");
   };
 
-  const handleLikeClick = (item, isLiked) => {
+  const handleLikeClick = ({ item, isLiked }) => {
     const token = localStorage.getItem("jwt");
-    const id = item.item._id;
-
-    console.log("Like Clicked - Item ID:", id, "Is Liked:", isLiked);
+    const id = item._id;
 
     const updateState = (updatedItem) => {
       const newItem = updatedItem.likedItem || updatedItem;
-      console.log("Updated Item:", newItem);
 
       setClothingItems((cards) =>
         cards.map((card) => (card._id === id ? newItem : card))
       );
-
-      console.log("State Updated - Clothing Items:", clothingItems);
     };
 
     if (!isLiked) {
-      console.log("Sending like request for item ID:", id);
       addCardLike(id, token)
         .then(updateState)
         .catch((err) => console.error("Error adding like:", err));
