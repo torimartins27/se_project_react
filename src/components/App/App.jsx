@@ -138,7 +138,7 @@ function App() {
     debugger;
     updateProfile(updatedItem, localStorage.getItem("jwt"))
       .then((data) => {
-        setCurrentUser(data);
+        setCurrentUser(data.user);
         setIsLoggedIn(true);
         console.log("User logged in: ", isLoggedIn);
         closeActiveModal();

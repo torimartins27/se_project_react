@@ -1,5 +1,7 @@
 import "./ClothesSection.css";
 import ItemCard from "../ItemCard/ItemCard";
+import CurrentUserContext from "../../contexts/CurrentUserContext";
+import { useContext } from "react";
 
 function ClothesSection({
   clothingItems,
@@ -7,6 +9,7 @@ function ClothesSection({
   onCardLike,
   handleAddClick,
 }) {
+  const currentUser = useContext(CurrentUserContext);
   return (
     <div className="clothes-section">
       <div className="paragraphButton-section">
@@ -21,14 +24,18 @@ function ClothesSection({
       </div>
       <ul className="clothes-section__items">
         {clothingItems.map((item) => {
-          return (
-            <ItemCard
-              key={item._id}
-              item={item}
-              onCardLike={onCardLike}
-              handleCardClick={handleCardClick}
-            />
-          );
+          if (item.owner === currentUser._id) {
+            return (
+              <ItemCard
+                key={item._id}
+                item={item}
+                onCardLike={onCardLike}
+                handleCardClick={handleCardClick}
+              />
+            );
+          } else {
+            return null;
+          }
         })}
       </ul>
     </div>
