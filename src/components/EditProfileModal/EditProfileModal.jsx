@@ -6,8 +6,11 @@ function EditProfileModal({ isOpen, onClose, handleEditProfile }) {
   const [name, setName] = useState(currentUser?.name || "");
   const [avatar, setAvatar] = useState(currentUser?.avatar || "");
 
-  const handleSubmit = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
     handleEditProfile({ name, avatar });
+
+    console.log(currentUser);
   };
 
   return (

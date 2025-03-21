@@ -40,7 +40,6 @@ function deleteItem(id, token) {
 }
 
 function addCardLike(id, token) {
-  console.log(`Request URL: ${baseUrl}/items/${id}/likes`);
   return fetch(`${baseUrl}/items/${id}/likes`, {
     method: "PUT",
     headers: {

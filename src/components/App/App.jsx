@@ -88,7 +88,6 @@ function App() {
         .then(updateState)
         .catch((err) => console.error("Error adding like:", err));
     } else {
-      console.log("Sending unlike request for item ID:", id);
       removeCardLike(id, token)
         .then(updateState)
         .catch((err) => console.error("Error removing like:", err));
@@ -130,11 +129,18 @@ function App() {
   };
 
   const handleEditProfile = ({ name, avatar }) => {
+    const token = localStorage.getItem("jwt");
+    if (!token) {
+      console.error("No token found. Logging out.");
+      return;
+    }
     const updatedItem = { name, avatar };
+    debugger;
     updateProfile(updatedItem, localStorage.getItem("jwt"))
       .then((data) => {
         setCurrentUser(data);
-        console.log("current user:", currentUser);
+        setIsLoggedIn(true);
+        console.log("User logged in: ", isLoggedIn);
         closeActiveModal();
       })
       .catch((err) => console.error("Error editing profile", err));
@@ -143,34 +149,29 @@ function App() {
   const handleRegister = (values) => {
     setIsLoading(true);
     signUp(values.name, values.avatar, values.email, values.password)
-      .then((res) => {
-        if (!res.ok) {
-          return res.json().then((err) => {
-            throw new Error(err.message || "Signup failed");
-          });
-        }
-        return res.json();
-      })
-      .then(() => signIn(values.email, values.password))
-      .then((res) => {
-        if (!res.ok) {
-          return res.json().then((err) => {
-            throw new Error(err.message || "Login failed");
-          });
-        }
-        return res.json();
-      })
       .then((data) => {
-        if (!data.token) throw new Error("Token not received");
-        localStorage.setItem("jwt", data.token);
-        return fetchUserData(data.token);
+        if (!data || !data.user) {
+          throw new Error("Signup failed, no user data");
+        }
+
+        return signIn(values.email, values.password);
+      })
+      .then((res) => {
+        if (!res || !res.token) {
+          throw new Error("Login failed, no token received");
+        }
+        localStorage.setItem("jwt", res.token);
+        return fetchUserData(res.token);
       })
       .then((userData) => {
         setCurrentUser(userData.foundUser);
         setIsLoggedIn(true);
         setActiveModal("");
+        navigate("/");
       })
-      .catch((error) => console.error(" failed", error))
+      .catch((error) => {
+        console.error("Operation failed:", error);
+      })
       .finally(() => setIsLoading(false));
   };
 
@@ -178,7 +179,6 @@ function App() {
     setIsLoading(true);
     signIn(values.email, values.password)
       .then((data) => {
-        console.log("Response Data:", data); // Debugging
         if (!data.token) {
           throw new Error("Token not received");
         }
@@ -186,7 +186,6 @@ function App() {
         return fetchUserData(data.token);
       })
       .then((userData) => {
-        console.log("Fetched userData:", userData); // Debugging
         setCurrentUser(userData.foundUser);
         setIsLoggedIn(true);
         setActiveModal("");
@@ -214,13 +213,10 @@ function App() {
   useEffect(() => {
     getItems()
       .then((data) => {
-        console.log("Fetched clothing items data.items:", data.items); // Debugging
         setClothingItems(data.items);
       })
       .catch(console.error);
   }, []);
-
-  console.log(clothingItems);
 
   useEffect(() => {
     const token = localStorage.getItem("jwt");
@@ -228,6 +224,7 @@ function App() {
       fetchUserData(token)
         .then((userData) => {
           setCurrentUser(userData.foundUser);
+          console.log("User data loaded: ", userData); // Debugging log
         })
         .catch((err) => {
           console.error("Token validation failed:", err);

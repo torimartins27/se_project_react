@@ -38,8 +38,6 @@ function Header({
     return <div className="header__avatar-placeholder">{firstLetter}</div>;
   };
 
-  console.log("Rendering currentUser:", currentUser);
-
   return (
     <header className="header">
       <div className="header__container-left">

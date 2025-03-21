@@ -18,7 +18,6 @@ function Main({ weatherData, handleCardClick, clothingItems, onCardLike }) {
         <ul className="cards__list">
           {(Array.isArray(clothingItems) ? clothingItems : [])
             .filter((item) => {
-              console.log("item:", item); // Debugging
               return item.weather === weatherData.type;
             })
             .map((item) => (

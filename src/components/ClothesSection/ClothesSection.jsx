@@ -7,7 +7,6 @@ function ClothesSection({
   onCardLike,
   handleAddClick,
 }) {
-  console.log("clothing items here:", clothingItems);
   return (
     <div className="clothes-section">
       <div className="paragraphButton-section">
