@@ -1,4 +1,16 @@
 .modal__to-register {
   border: none;
   background: none;
+  position: relative;
+  top: 28px;
+  left: 70px;
+  color: grey;
+}
+
+.modal__button-container {
+  position: relative;
+}
+
+.modal__submit-login {
+  margin: 0;
 }

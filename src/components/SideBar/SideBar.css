@@ -44,3 +44,7 @@
   font-family: "CabinetGrotesk-Bold", Arial, sans-serif;
   background: none;
 }
+
+.sidebar__button:last-of-type {
+  margin-top: 8px;
+}

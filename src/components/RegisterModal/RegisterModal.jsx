@@ -34,7 +34,6 @@ export default function RegisterModal({
       onClose={onClose}
       formValid={isValid}
       onSubmit={onRegistration}
-      className="modal__button-next"
     >
       <label htmlFor="register-email" className="modal__label">
         Email
@@ -81,7 +80,7 @@ export default function RegisterModal({
           id="register-avatar"
           type="url"
           name="avatar"
-          className="modal__input"
+          className="modal__input-avatarURL"
           placeholder="Avatar URL"
           onChange={handleChange}
           value={values.avatar || ""}

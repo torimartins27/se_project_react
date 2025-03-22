@@ -1,5 +1,6 @@
 import { useContext, useState } from "react";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
+import "./EditProfileModal.css";
 
 function EditProfileModal({ isOpen, onClose, handleEditProfile }) {
   const currentUser = useContext(CurrentUserContext);
@@ -44,7 +45,7 @@ function EditProfileModal({ isOpen, onClose, handleEditProfile }) {
             />
           </label>
           <button type="submit" className="modal__save-button">
-            Save
+            Save Changes
           </button>
         </form>
       </div>

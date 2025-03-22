@@ -1,0 +1,11 @@
+.modal__save-button {
+  width: 128px;
+  height: 36px;
+  color: white;
+  background-color: black;
+  font-family: "CabinetGrotesk", sans-serif;
+  font-size: 16px;
+  border-radius: 4px;
+  border: none;
+  margin-top: 32px;
+}
