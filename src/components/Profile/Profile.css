@@ -3,6 +3,24 @@
   max-width: 1440px;
 }
 
-.profile__clothing-items {
-  margin: 0;
+.profile__clothing-items .cards__text {
+  font-family: "CabinetGrotesk", sans-serif;
+  padding-left: 40px;
+  padding-top: 40px;
+  padding-bottom: 34px;
+}
+
+.profile__clothing-items .cards__list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 315px);
+  grid-gap: 20px 20px;
+  padding: 0;
+  margin-left: 40px;
+  margin-right: 40px;
+}
+
+@media (max-width: 480px) {
+  .profile__clothing-items .cards__list {
+    justify-content: center;
+  }
 }
