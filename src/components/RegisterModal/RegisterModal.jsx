@@ -8,6 +8,7 @@ export default function RegisterModal({
   isOpen,
   onClose,
   handleLoginClick,
+  buttonClassName,
 }) {
   const { values, handleChange, isValid, resetForm } = useFormAndValidation({
     name: "",
@@ -34,6 +35,7 @@ export default function RegisterModal({
       onClose={onClose}
       formValid={isValid}
       onSubmit={onRegistration}
+      buttonClassName="modal__submit-register"
     >
       <label htmlFor="register-email" className="modal__label">
         Email

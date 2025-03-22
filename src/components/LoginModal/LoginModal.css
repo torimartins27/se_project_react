@@ -1,16 +1,19 @@
 .modal__to-register {
   border: none;
   background: none;
-  position: relative;
-  top: 28px;
-  left: 70px;
   color: grey;
+  position: absolute;
+  top: 8px;
+  left: 17%;
 }
 
 .modal__button-container {
   position: relative;
+  margin-top: 32px;
 }
 
-.modal__submit-login {
+.modal__submit {
   margin: 0;
+  width: 73px;
+  height: 36px;
 }

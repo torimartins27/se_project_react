@@ -3,7 +3,7 @@
   background: none;
   position: absolute;
   top: 8px;
-  left: 70px;
+  left: 17%;
   color: gray;
 }
 
@@ -11,8 +11,8 @@
   position: relative;
 }
 
-.modal__submit {
-  width: 124px;
+.modal__submit-register {
+  width: 65px;
   height: 36px;
 }
 

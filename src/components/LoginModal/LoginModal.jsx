@@ -24,6 +24,7 @@ export default function LoginModal({
       onClose={onClose}
       onSubmit={handleSubmit}
       formValid={isValid}
+      classname="modal__submit-login"
     >
       <label htmlFor="login-email" className="modal__label">
         Email

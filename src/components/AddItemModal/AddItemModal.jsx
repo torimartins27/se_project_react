@@ -1,11 +1,13 @@
 import "./AddItemModal.css";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import { useState, useEffect } from "react";
+import "./AddItemModal.css";
 
 export default function AddItemModal({
   onClose,
   isOpen,
   onAddItemModalSubmit,
+  buttonClassName,
 }) {
   const [name, setName] = useState("");
   const [image, setImage] = useState("");
@@ -48,6 +50,7 @@ export default function AddItemModal({
       isOpen={isOpen}
       onClose={onClose}
       onSubmit={handleSubmit}
+      buttonClassName="modal__submit-new-garment"
     >
       <label htmlFor="name" className="modal__label">
         Name
