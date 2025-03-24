@@ -135,7 +135,6 @@ function App() {
       return;
     }
     const updatedItem = { name, avatar };
-    debugger;
     updateProfile(updatedItem, localStorage.getItem("jwt"))
       .then((data) => {
         setCurrentUser(data.user);
@@ -148,7 +147,7 @@ function App() {
 
   const handleRegister = (values) => {
     setIsLoading(true);
-    signUp(values.name, values.avatar, values.email, values.password)
+    return signUp(values.name, values.avatar, values.email, values.password)
       .then((data) => {
         if (!data || !data.user) {
           throw new Error("Signup failed, no user data");
@@ -166,7 +165,7 @@ function App() {
       .then((userData) => {
         setCurrentUser(userData.foundUser);
         setIsLoggedIn(true);
-        setActiveModal("");
+        closeActiveModal();
         navigate("/");
       })
       .catch((error) => {
@@ -177,7 +176,7 @@ function App() {
 
   const handleLogin = (values) => {
     setIsLoading(true);
-    signIn(values.email, values.password)
+    return signIn(values.email, values.password)
       .then((data) => {
         if (!data.token) {
           throw new Error("Token not received");
@@ -188,7 +187,7 @@ function App() {
       .then((userData) => {
         setCurrentUser(userData.foundUser);
         setIsLoggedIn(true);
-        setActiveModal("");
+        closeActiveModal();
       })
       .catch((error) => console.error("Login failed", error))
       .finally(() => setIsLoading(false));
@@ -224,13 +223,16 @@ function App() {
       fetchUserData(token)
         .then((userData) => {
           setCurrentUser(userData.foundUser);
-          console.log("User data loaded: ", userData); // Debugging log
+          setIsLoggedIn(true);
         })
         .catch((err) => {
           console.error("Token validation failed:", err);
           localStorage.removeItem("jwt");
+          setIsLoggedIn(false);
           navigate("/signin");
         });
+    } else {
+      setIsLoggedIn(false);
     }
   }, [navigate]);
 
@@ -272,6 +274,7 @@ function App() {
                     handleSignOut={handleSignOut}
                     onCardLike={handleLikeClick}
                     handleEditProfileClick={handleEditProfileClick}
+                    isLoggedIn={isLoggedIn}
                   />
                 </ProtectedRoute>
               }

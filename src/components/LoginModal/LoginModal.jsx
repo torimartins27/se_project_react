@@ -13,8 +13,13 @@ export default function LoginModal({
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    handleLogin(values);
-    resetForm({ email: "", password: "" });
+    handleLogin(values)
+      .then(() => {
+        resetForm();
+      })
+      .catch((error) => {
+        console.error("Login failed: ", error);
+      });
   };
   return (
     <ModalWithForm

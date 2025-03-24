@@ -12,8 +12,10 @@ function Profile({
   onCardLike,
   handleEditProfileClick,
   isLiked,
+  isLoggedIn, // isLoggedIn is passed as a prop
 }) {
   const currentUser = useContext(CurrentUserContext);
+
   if (!currentUser) {
     return <p>Please log in to view your profile.</p>;
   }
@@ -26,14 +28,21 @@ function Profile({
           handleSignOut={handleSignOut}
         />
       </section>
+
       <section className="profile__clothing-items">
-        <ClothesSection
-          clothingItems={clothingItems}
-          handleCardClick={handleCardClick}
-          handleAddClick={handleAddClick}
-          onCardLike={onCardLike}
-          isLiked={isLiked}
-        />
+        {isLoggedIn ? (
+          <>
+            <ClothesSection
+              clothingItems={clothingItems}
+              handleCardClick={handleCardClick}
+              handleAddClick={handleAddClick}
+              onCardLike={onCardLike}
+              isLiked={isLiked}
+            />
+          </>
+        ) : (
+          <p>Please log in to view your clothing items.</p>
+        )}
       </section>
     </div>
   );

@@ -19,8 +19,13 @@ export default function RegisterModal({
 
   const onRegistration = (event) => {
     event.preventDefault();
-    handleRegister(values);
-    resetForm();
+    handleRegister(values)
+      .then(() => {
+        resetForm();
+      })
+      .catch((error) => {
+        console.error("Registration failed: ", error);
+      });
   };
 
   const handleOrLoginClick = () => {
