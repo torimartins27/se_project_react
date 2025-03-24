@@ -21,4 +21,4 @@ WTWR is an interactive web application that provides users with personalized out
 - **Weather Integration** - Displays the current temperature using a weather API
 - **Personalized Recommendations** - Suggests appropriate clothing based
 
-[Link to Backend: ](https://github.com/torimartins27/se_project_express)
+[Link to Backend](https://github.com/torimartins27/se_project_express)
