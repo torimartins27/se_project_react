@@ -2,7 +2,7 @@ import React from "react";
 import { Navigate } from "react-router-dom";
 
 export default function ProtectedRoute({
-  isLoggedIn,
+  isLoggedIn = localStorage.getItem("jwt"),
   children,
   anonymous = false,
 }) {

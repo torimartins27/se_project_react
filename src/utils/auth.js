@@ -1,19 +1,17 @@
 const BASE_URL = "http://localhost:3001";
+import checkResponse from "./api";
 
 export const signUp = (name, avatar, email, password) => {
   return fetch(`${BASE_URL}/signup`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ name, avatar, email, password }),
-  }).then(async (res) => {
-    if (!res.ok) {
-      const errorData = await res.json().catch((error) => {
-        console.error("Signup failed", error);
-        throw error;
-      });
-    }
-    return res.json();
-  });
+  })
+    .then(checkResponse)
+    .catch((error) => {
+      console.error("Signup failed:", error);
+      throw error;
+    });
 };
 
 export const signIn = (email, password) => {
@@ -23,7 +21,12 @@ export const signIn = (email, password) => {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({ email, password }),
-  }).then((res) => res.json());
+  })
+    .then(checkResponse)
+    .catch((error) => {
+      console.error("Signin failed:", error);
+      throw error;
+    });
 };
 
 export const fetchUserData = (token) => {
@@ -34,9 +37,9 @@ export const fetchUserData = (token) => {
       Authorization: `Bearer ${token}`,
     },
   })
-    .then((res) => res.json())
+    .then(checkResponse)
     .catch((error) => {
-      console.error("Error fetching user data:", error);
+      console.error("Signin failed:", error);
       throw error;
     });
 };

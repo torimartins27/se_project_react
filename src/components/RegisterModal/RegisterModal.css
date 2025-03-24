@@ -2,18 +2,19 @@
   border: none;
   background: none;
   position: absolute;
-  top: 8px;
-  left: 17%;
+  bottom: 42px;
+  right: 65%;
   color: gray;
 }
 
-.modal__button-containter {
+.modal__button-container {
   position: relative;
 }
 
 .modal__submit-register {
   width: 65px;
   height: 36px;
+  margin-bottom: 36px;
 }
 
 .modal__input-avatarURL {

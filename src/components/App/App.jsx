@@ -139,7 +139,6 @@ function App() {
       .then((data) => {
         setCurrentUser(data.user);
         setIsLoggedIn(true);
-        console.log("User logged in: ", isLoggedIn);
         closeActiveModal();
       })
       .catch((err) => console.error("Error editing profile", err));
@@ -266,7 +265,7 @@ function App() {
             <Route
               path="/profile"
               element={
-                <ProtectedRoute>
+                <ProtectedRoute isLoggedIn={isLoggedIn}>
                   <Profile
                     clothingItems={clothingItems}
                     handleCardClick={handleCardClick}
@@ -274,7 +273,6 @@ function App() {
                     handleSignOut={handleSignOut}
                     onCardLike={handleLikeClick}
                     handleEditProfileClick={handleEditProfileClick}
-                    isLoggedIn={isLoggedIn}
                   />
                 </ProtectedRoute>
               }

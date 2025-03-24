@@ -8,7 +8,6 @@ export default function RegisterModal({
   isOpen,
   onClose,
   handleLoginClick,
-  buttonClassName,
 }) {
   const { values, handleChange, isValid, resetForm } = useFormAndValidation({
     name: "",

@@ -13,13 +13,12 @@ function ItemModal({
   const currentUser = useContext(CurrentUserContext);
 
   const isOwn = selectedCard?.owner === currentUser?._id;
+  const isLoggedIn = !!currentUser;
 
-  const itemDeleteButtonClassName = `modal__delete-item-btn ${
-    isOwn ? "" : "modal__delete-button_hidden"
-  }`;
+  const showDeleteButton = isLoggedIn && isOwn;
 
   const submitDelete = () => {
-    if (isOwn) {
+    if (showDeleteButton) {
       onDeleteClick();
     }
   };
@@ -40,9 +39,11 @@ function ItemModal({
         <div className="modal__footer">
           <h2 className="modal__caption">{card.name}</h2>
           <p className="modal__weather">Weather: {card.weather}</p>
-          <button onClick={submitDelete} className={itemDeleteButtonClassName}>
-            Delete Item
-          </button>
+          {showDeleteButton && (
+            <button onClick={submitDelete} className="modal__delete-item-btn">
+              Delete Item
+            </button>
+          )}
         </div>
       </div>
     </div>
