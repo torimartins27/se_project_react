@@ -20,8 +20,8 @@ function EditProfileModal({ isOpen, onClose, handleEditProfile }) {
       onSubmit={handleSubmit}
       buttonText="Save Changes"
       buttonClassName="modal__submit-edit-profile"
+      title="Edit Profile"
     >
-      <h2 className="modal__title">Edit Profile</h2>
       <form
         onSubmit={handleSubmit}
         className=" modal__form modal__form-edit-profile"
