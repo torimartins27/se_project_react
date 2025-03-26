@@ -20,33 +20,28 @@ function EditProfileModal({ isOpen, onClose, handleEditProfile }) {
       onSubmit={handleSubmit}
       buttonText="Save Changes"
       buttonClassName="modal__submit-edit-profile"
-      title="Edit Profile"
+      title="Edit"
     >
-      <form
-        onSubmit={handleSubmit}
-        className=" modal__form modal__form-edit-profile"
-      >
-        <label className="modal__label">
-          Name
-          <input
-            type="text"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            className="modal__input"
-            required
-          />
-        </label>
-        <label className="modal__label">
-          Avatar URL
-          <input
-            type="url"
-            value={avatar}
-            onChange={(e) => setAvatar(e.target.value)}
-            className="modal__input"
-            required
-          />
-        </label>
-      </form>
+      <label className="modal__label">
+        Name
+        <input
+          type="text"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          className="modal__input"
+          required
+        />
+      </label>
+      <label className="modal__label">
+        Avatar URL
+        <input
+          type="url"
+          value={avatar}
+          onChange={(e) => setAvatar(e.target.value)}
+          className="modal__input"
+          required
+        />
+      </label>
     </ModalWithForm>
   );
 }
