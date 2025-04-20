@@ -1,4 +1,4 @@
-const BASE_URL = "http://localhost:3001";
+export const BASE_URL = "http://localhost:3001";
 import checkResponse from "./api";
 
 export const signUp = (name, avatar, email, password) => {

@@ -3,10 +3,11 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://torimartins27.github.io/se_project_react/",
+  "homepage": "https://what-the-weather.jumpingcrab.com",
   "scripts": {
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist",
+    "start": "vite",
+    "deploy": "npm run build && scp -r ./dist/* torimartins27@34.139.59.39:/home/torimartins27/frontend",
     "dev": "vite --open",
     "build": "vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
