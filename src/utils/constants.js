@@ -115,5 +115,5 @@ export const APIkey = "9be7b4b549531e9721968a57b06c10d8";
 
 export const baseUrl =
   process.env.NODE_ENV === "production"
-    ? "https://api.what-the-weather.jumpingcrab.com"
+    ? "https://api.what-the-weather.justlearning.net"
     : "http://localhost:3001";

@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://what-the-weather.jumpingcrab.com",
+  "homepage": "https://what-the-weather.justlearning.net",
   "scripts": {
     "predeploy": "npm run build",
     "start": "vite",
